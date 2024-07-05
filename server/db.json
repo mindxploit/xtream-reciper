@@ -535,6 +535,32 @@
       "comment": "Fresh and vibrant.",
       "rating": 4,
       "date": "2024-07-02T14:20:00.000Z"
+    },
+    {
+      "params": {
+        "comment": "not so good",
+        "rating": 3
+      },
+      "recipeId": "9",
+      "id": "PagZGnt"
+    },
+    {
+      "comment": "bad",
+      "rating": 1,
+      "recipeId": "9",
+      "id": "5uijIzK"
+    },
+    {
+      "comment": "new",
+      "rating": 1,
+      "recipeId": "9",
+      "id": "cGZS6xj"
+    },
+    {
+      "comment": "amazing pizza",
+      "rating": 5,
+      "recipeId": "2",
+      "id": "P_ZWZPe"
     }
   ],
   "cuisines": [
