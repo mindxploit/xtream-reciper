@@ -22,7 +22,7 @@ const RecipeDetails = ({ params }: { params: { slug: string } }) => {
   const [currentRecipe, setCurrentRecipe] = useState();
 
   const [currentImage, setCurrentImage] = useState("");
-  const [currentComments, setCurrentComments] = useState();
+  const [currentComments, setCurrentComments] = useState<any[]>([]);
   const [review, setReview] = useState("");
   const [rating, setRating] = useState(5);
 

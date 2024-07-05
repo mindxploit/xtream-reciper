@@ -156,9 +156,9 @@ const Home = () => {
       </Container>
 
       <HStack
+        my={5}
         background={"white"}
         borderTop={"1px solid purple"}
-        position={"absolute"}
         pt={6}
         bottom={10}
         right={0}
