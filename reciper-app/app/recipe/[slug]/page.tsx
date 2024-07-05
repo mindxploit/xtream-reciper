@@ -1,5 +1,5 @@
 "use client"
-import { Box, Heading, Text, VStack } from '@chakra-ui/react';
+import { Badge, Box, HStack, Heading, Text, VStack } from '@chakra-ui/react';
 import axios from 'axios';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -9,6 +9,7 @@ const RecipeDetails = ({ params }: { params: { slug: string } }) => {
   const [currentRecipe, setCurrentRecipe] = useState()
 
   const [currentImage, setCurrentImage] = useState("");
+  const [currentComments, setCurrentComments] = useState()
 
   const router = useRouter()
 
@@ -32,6 +33,14 @@ const RecipeDetails = ({ params }: { params: { slug: string } }) => {
         .then((response) => {
           getImage(response.data.image)
           setCurrentRecipe(response.data)
+        });
+
+        axios
+        .get(`http://localhost:8080/recipes/${params.slug}/comments`, {
+        })
+        .then((response) => {
+          setCurrentComments(response.data)
+          console.log(response.data)
         });
     } catch (e) {
       console.error(e);
@@ -64,6 +73,16 @@ const RecipeDetails = ({ params }: { params: { slug: string } }) => {
         <Text>{currentRecipe?.ingredients.join(", ")}</Text>
         <Heading size={"md"}>Instructions</Heading>
         <Text>{currentRecipe?.instructions}</Text>
+        
+        <Box>
+          <Heading mb={2} size={"md"}>User comments</Heading>
+          {currentComments && currentComments?.map((c) => (
+            <HStack key={c.id}>
+              <Badge colorScheme='yellow'>{c.rating} ⭐️</Badge>
+              <Text>{c.comment}</Text>
+            </HStack>
+          ))}
+        </Box>
       </VStack>
     </div>
   )
