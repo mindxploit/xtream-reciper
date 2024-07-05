@@ -50,7 +50,7 @@ const CardRecipe: React.FC<CardRecipeProps> = ({
       borderRadius="lg"
       overflow="hidden"
       p={4}
-      onClick={() => router.push(`/recipe/${id}`)}
+      onClick={() => router.push(`recipe/${id}`)}
       cursor="pointer"
     >
       <Stack  spacing={2}>

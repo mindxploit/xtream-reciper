@@ -14,9 +14,9 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { FilterContext, useFilterContext } from "@/context/FIlterContext";
+import { useFilterContext } from "@/context/FIlterContext";
 import CardRecipe from "@/components/CardRecipe";
 
 const Home = () => {
@@ -51,8 +51,6 @@ const Home = () => {
       setRecipes(response.data);
     });
   }, []);
-
-  console.log(recipes.length);
 
   useEffect(() => {
     try {
