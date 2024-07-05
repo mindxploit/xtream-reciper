@@ -29,7 +29,6 @@ const RecipeDetails = ({ params }: { params: { slug: string } }) => {
   const router = useRouter();
 
   const handleSubmit = () => {
-    console.log(review);
     try {
       axios
         .post(`http://localhost:8080/recipes/${params.slug}/comments`, {
@@ -37,7 +36,6 @@ const RecipeDetails = ({ params }: { params: { slug: string } }) => {
           rating,
         })
         .then((response) => {
-          console.log("submitted success");
           setCurrentComments((prev) => [...prev, { comment: review, rating }])
         });
     } catch (e) {
@@ -70,7 +68,6 @@ const RecipeDetails = ({ params }: { params: { slug: string } }) => {
         .get(`http://localhost:8080/recipes/${params.slug}/comments`, {})
         .then((response) => {
           setCurrentComments(response.data);
-          console.log(response.data);
         });
     } catch (e) {
       console.error(e);
