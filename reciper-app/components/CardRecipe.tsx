@@ -10,7 +10,7 @@ interface CardRecipeProps {
   id: string;
   name: string;
   ingredients: string[];
-  difficultyId: string;
+  difficulty: string;
   cuisine: string;
   diet: string;
   image: string;
@@ -20,7 +20,7 @@ const CardRecipe: React.FC<CardRecipeProps> = ({
   id,
   name,
   ingredients,
-  difficultyId,
+  difficulty,
   cuisine,
   diet,
   image,
@@ -61,12 +61,12 @@ const CardRecipe: React.FC<CardRecipeProps> = ({
         {currentImage && (
           <Image width={150} height={50} alt="img" src={currentImage} />
         )}
-          <VStack mt={2}>
-            <Badge colorScheme="">
-              {["Easy", "Medium", "Hard"][Number(difficultyId) - 1]} 💪🏻
+          <VStack mt={2} alignItems={"flex-start"} >
+            <Badge colorScheme="gray">
+              {difficulty} 💪🏻
             </Badge>
-            <Badge>{cuisine}</Badge>
-            <Badge>{diet}</Badge>
+            <Badge colorScheme="gray">{cuisine}</Badge>
+            <Badge colorScheme="gray">{diet}</Badge>
           </VStack>
         </HStack>
         <Text>{ingredients.join(", ")}</Text>

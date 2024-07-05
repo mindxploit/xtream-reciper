@@ -81,7 +81,11 @@ const Home = () => {
         </HStack>
       <Grid templateColumns="repeat(auto-fit, minmax(240px, 1fr))" gap={6}>
         {recipes.map(recipe => (
-          <CardRecipe key={recipe.id} {...recipe} />
+          <CardRecipe key={recipe.id} {...recipe}
+          cuisine={cuisines[recipe.cuisineId - 1].name}
+          difficulty={difficulties[recipe.difficultyId - 1].name}
+          diet={diets[recipe.dietId - 1].name}
+          />
         ))}
       </Grid>
     </Container>
