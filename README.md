@@ -99,5 +99,17 @@ comments. Enable users to add comments and rate the recipe, displaying the avera
 comments.
 
 ## How to run
+1) Launch the local server
+```bash
+cd server
+npm install
+```
+
+2) Install the dependencies and run the project
+```bash
+cd reciper-app
+npm i
+npm run dev
+```
 
 ...
