@@ -1,10 +1,21 @@
 // app/providers.tsx
-'use client'
+"use client";
 
-import { ChakraProvider, extendTheme, withDefaultColorScheme } from '@chakra-ui/react'
+import { FilterProvider } from "@/context/FIlterContext";
+import {
+  ChakraProvider,
+  extendTheme,
+  withDefaultColorScheme,
+} from "@chakra-ui/react";
 
 export function Providers({ children }: { children: React.ReactNode }) {
-  const customTheme = extendTheme(withDefaultColorScheme({ colorScheme: 'purple' }))
+  const customTheme = extendTheme(
+    withDefaultColorScheme({ colorScheme: "purple" })
+  );
 
-  return <ChakraProvider theme={customTheme}>{children}</ChakraProvider>
+  return (
+    <ChakraProvider theme={customTheme}>
+      <FilterProvider>{children}</FilterProvider>
+    </ChakraProvider>
+  );
 }
