@@ -59,7 +59,7 @@ const CardRecipe: React.FC<CardRecipeProps> = ({
           </Text>
         <HStack alignItems={"flex-start"}>
         {currentImage && (
-          <Image width={150} height={50} alt="img" src={currentImage} />
+          <Image width={140} height={50} alt="img" src={currentImage} />
         )}
           <VStack mt={2} alignItems={"flex-start"} >
             <Badge colorScheme="gray">
@@ -69,7 +69,7 @@ const CardRecipe: React.FC<CardRecipeProps> = ({
             <Badge colorScheme="gray">{diet}</Badge>
           </VStack>
         </HStack>
-        <Text>{ingredients.join(", ")}</Text>
+        <Text fontSize={"sm"}>{ingredients.join(", ")}</Text>
       </Stack>
     </Box>
   );

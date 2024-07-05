@@ -11,6 +11,7 @@ import {
   Grid,
   HStack,
   Flex,
+  Button,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import { useContext, useEffect, useState } from "react";
@@ -28,6 +29,8 @@ const Home = () => {
   const [diets, setDiets] = useState<any[]>([]);
 
   const [searchText, setSearchText] = useState<string>("");
+
+  const [currentPage, setCurrentPage] = useState<number>(1)
 
   useEffect(() => {
     //   // Fetch initial data for the dropdowns
@@ -58,21 +61,25 @@ const Home = () => {
             cuisineId: cuisines?.find((e) => e.name === cuisine)?.id,
             dietId: diets?.find((e) => e.name === diet)?.id,
             difficultyId: difficulties?.find((e) => e.name === difficulty)?.id,
+            _page: currentPage,
+            _limit: 6,
           },
         })
         .then((response) => {
+        console.log(response.data, 'dd')
           setRecipes(response.data);
         });
     } catch (e) {
       console.error(e);
     }
-  }, [searchText, cuisine, diet, difficulty]);
+  }, [searchText, cuisine, diet, difficulty, currentPage]);
 
   return (
-    <Container maxW="container.md" mt={10}>
+  <Box height={"100wh"}>
+    <Container maxW="container.md" >
       <Box
         as="header"
-        mb={10}
+        mb={5}
         textAlign="center"
         top="0"
         bg="white"
@@ -83,16 +90,16 @@ const Home = () => {
           Reciper
         </Text>
       </Box>
-      <Stack spacing={4} mb={5}>
+      <Stack spacing={4} mb={3}>
         <HStack spacing={2}>
           <Input
             onChange={(e) => setSearchText(e.target.value)}
-            placeholder="Search for recipes..."
+            placeholder="Search for recipes... 👨🏻‍🍳"
           />
           <IconButton aria-label="Search recipes" icon={<SearchIcon />} />
         </HStack>
       </Stack>
-      <HStack>
+      <HStack mb={5}>
         <Select
           placeholder="Cuisine"
           value={cuisine}
@@ -142,6 +149,13 @@ const Home = () => {
         ))}
       </Grid>
     </Container>
+
+      <HStack background={"white"} borderTop={"1px solid purple"} position={"absolute"} pt={6} bottom={10} right={0} left={0} justifyContent={"center"} spacing={3}>
+        <Button onClick={() => currentPage > 1 && setCurrentPage((prev) => prev - 1)}>{"<"}</Button>
+        <Text>Page: {currentPage}</Text>
+        <Button onClick={() => setCurrentPage((prev) => prev + 1)}>{">"}</Button>
+      </HStack>
+      </Box>
   );
 };
 
